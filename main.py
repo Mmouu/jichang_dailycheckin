@@ -8,9 +8,10 @@ passwd = os.environ.get('PASSWD')
 # server酱
 SCKEY = os.environ.get('SCKEY')
 
-login_url = 'https://ikuuu.eu/auth/login'
-check_url = 'https://ikuuu.eu/user/checkin'
-info_url = 'https://ikuuu.eu/user/profile'
+loginUrl = os.environ.get('LOGINURL')
+checkUrl = os.environ.get('CHECKURL')
+infoUrl = os.environ.get('INFOURL')
+
 
 header = {
         'origin': 'https://ikuuu.eu',
@@ -22,14 +23,14 @@ data = {
 }
 try:
     print('进行登录...')
-    response = json.loads(session.post(url=login_url,headers=header,data=data).text)
+    response = json.loads(session.post(url=loginUrl,headers=header,data=data).text)
     print(response['msg'])
     # 获取账号名称
-    info_html = session.get(url=info_url,headers=header).text
+    info_html = session.get(url=infoUrl,headers=header).text
 #     info = "".join(re.findall('<span class="user-name text-bold-600">(.*?)</span>', info_html, re.S))
 #     print(info)
     # 进行签到
-    result = json.loads(session.post(url=check_url,headers=header).text)
+    result = json.loads(session.post(url=checkUrl,headers=header).text)
     print(result['msg'])
     content = result['msg']
     # 进行推送
