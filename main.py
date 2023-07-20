@@ -8,13 +8,14 @@ passwd = os.environ.get('PASSWD')
 # server酱
 SCKEY = os.environ.get('SCKEY')
 
-loginUrl = os.environ.get('LOGINURL')
-checkUrl = os.environ.get('CHECKURL')
-infoUrl = os.environ.get('INFOURL')
+url = os.environ.get('URL')
+loginUrl = url + '/auth/login'
+checkUrl = url + '/user/checkin'
+infoUrl = url + '/user/profile'
 
 
 header = {
-        'origin': 'https://ikuuu.eu',
+        'origin': url,
         'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
 }
 data = {
